@@ -31,5 +31,7 @@ namespace Discuzit.Models
         }
 
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Question> Questions { get; set; }
     }
 }
