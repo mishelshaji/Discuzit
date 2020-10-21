@@ -24,7 +24,8 @@ namespace Discuzit.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
-                .Index(t => t.CategoryId);
+                .Index(t => t.CategoryId)
+                .Index(t => t.Title);
             
             AddColumn("dbo.Categories", "Category_Id", c => c.Int());
             CreateIndex("dbo.Categories", "Category_Id");
