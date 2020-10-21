@@ -65,6 +65,12 @@ namespace Discuzit.Models
     public class RegisterViewModel
     {
         [Required]
+        [MinLength(3)]
+        [MaxLength(15)]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
