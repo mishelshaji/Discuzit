@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202010211401204_InitialMigration.Designer.cs">
       <DependentUpon>202010211401204_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010211436419_SeedAdminAndRole.cs" />
+    <Compile Include="Migrations\202010211436419_SeedAdminAndRole.Designer.cs">
+      <DependentUpon>202010211436419_SeedAdminAndRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -274,6 +278,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010211401204_InitialMigration.resx">
       <DependentUpon>202010211401204_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010211436419_SeedAdminAndRole.resx">
+      <DependentUpon>202010211436419_SeedAdminAndRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
