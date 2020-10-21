@@ -159,10 +159,10 @@ namespace Discuzit.Controllers
                 if (result.Succeeded)
                 {
                     // Register role
-                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole(UserRoles.IsAdmin));
-                    //await UserManager.AddToRoleAsync(user.Id, UserRoles.IsAdmin)
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.IsUser));
+                    await UserManager.AddToRoleAsync(user.Id, UserRoles.IsUser);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

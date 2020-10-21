@@ -8,5 +8,6 @@ namespace Discuzit.Shared
     public class UserRoles
     {
         public const string IsAdmin = "IsAdmin";
+        public const string IsUser = "IsUser";
     }
 }
