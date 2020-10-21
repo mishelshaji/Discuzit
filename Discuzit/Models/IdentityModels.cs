@@ -29,5 +29,7 @@ namespace Discuzit.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
