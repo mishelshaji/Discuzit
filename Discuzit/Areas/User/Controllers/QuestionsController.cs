@@ -8,9 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Discuzit.Models;
+using Discuzit.Shared;
 
 namespace Discuzit.Areas.User.Controllers
 {
+    [Authorize(Roles = UserRoles.IsAdmin)]
     public class QuestionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

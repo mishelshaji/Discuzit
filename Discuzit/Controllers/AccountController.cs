@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Discuzit.Models;
 using Discuzit.Shared;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Discuzit.Controllers
@@ -82,7 +83,23 @@ namespace Discuzit.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        var role = await UserManager.GetRolesAsync(user.Id);
+                        switch (role[0])
+                        {
+                            case UserRoles.IsAdmin:
+                                return RedirectToAction(actionName: "Index", controllerName: "Home", new { area = "Admin" });
+                            case UserRoles.IsUser:
+                                return RedirectToAction(actionName: "Index", controllerName: "Home", new { area = "User" });
+                        }
+
+                        return Content("Login Failed");
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
