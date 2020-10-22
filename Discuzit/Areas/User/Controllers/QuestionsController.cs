@@ -9,10 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using Discuzit.Models;
 using Discuzit.Shared;
+using Microsoft.AspNet.Identity;
 
 namespace Discuzit.Areas.User.Controllers
 {
-    [Authorize(Roles = UserRoles.IsAdmin)]
+    [Authorize(Roles = UserRoles.IsUser)]
     public class QuestionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -51,8 +52,14 @@ namespace Discuzit.Areas.User.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Body,TotalAnswers,TotalUpVotes,TotalDownVotes,CreatedOn,UpdatedOn,CategoryId,CreatedBy")] Question question)
+        public async Task<ActionResult> Create([Bind(Include = "Title,Body,CategoryId")] Question question)
         {
+            question.CreatedBy = User.Identity.GetUserId();
+            var dateTime = DateTime.Now;
+            question.CreatedOn = dateTime;
+            question.UpdatedOn = dateTime;
+
+            ModelState[nameof(Question.CreatedBy)].Errors.Clear();
             if (ModelState.IsValid)
             {
                 db.Questions.Add(question);
