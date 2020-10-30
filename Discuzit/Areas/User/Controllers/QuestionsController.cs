@@ -17,12 +17,18 @@ namespace Discuzit.Areas.User.Controllers
     public class QuestionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private MarkdownRenderer _markdownRenderer =  new MarkdownRenderer();
 
         // GET: User/Questions
         public async Task<ActionResult> Index()
         {
-            var questions = db.Questions.Include(q => q.Category);
-            return View(await questions.ToListAsync());
+            var useriD = User.Identity.GetUserId();
+            var questions = await db.Questions.Where(q=>q.CreatedBy == useriD).Take(100).Include(q => q.Category).ToListAsync();
+            foreach (var question in questions)
+            {
+                question.Body = _markdownRenderer.RenderHtmlFromMd(question.Body);
+            }
+            return View(questions);
         }
 
         // GET: User/Questions/Details/5
