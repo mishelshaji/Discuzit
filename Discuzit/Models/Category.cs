@@ -23,6 +23,6 @@ namespace Discuzit.Models
         [MaxLength(2000)]
         public string Description { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<Question> Questions { get; set; }
     }
 }

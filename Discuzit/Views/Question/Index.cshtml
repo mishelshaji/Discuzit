@@ -1,0 +1,32 @@
+﻿@model Discuzit.Models.ViewModels.QuestionsAndCategory
+@{
+    ViewBag.Title = "Questions";
+}
+
+<h2>Questions</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <h4>Categories</h4>
+            <ul class="list-group">
+            @foreach (var item in Model.Categories)
+            {
+                <li class="list-group-item">
+                    @item.CategoryName
+                    <span class="badge">@item.Questions.Count</span>
+                </li>
+            }
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h3>Recent Questions</h3>
+            @foreach (var question in Model.Questions)
+            {
+                @Html.Partial("_QuestionCard", question)
+            }
+        </div>
+        <div class="col-sm-3">
+            <h4>News</h4>
+        </div>
+    </div>
+</div>

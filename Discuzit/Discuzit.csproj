@@ -205,6 +205,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,12 +225,17 @@
     <Compile Include="Migrations\202010211530209_CreatedQuestionModel.Designer.cs">
       <DependentUpon>202010211530209_CreatedQuestionModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011181655242_AddedNavigationToQuestionsFromCategory.cs" />
+    <Compile Include="Migrations\202011181655242_AddedNavigationToQuestionsFromCategory.Designer.cs">
+      <DependentUpon>202011181655242_AddedNavigationToQuestionsFromCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\ViewModels\QuestionsAndCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\MarkdownRenderer.cs" />
     <Compile Include="Shared\UserRoles.cs" />
@@ -312,6 +318,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_MarkdownEditorReference.cshtml" />
     <Content Include="Views\Shared\_QuestionCard.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -343,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010211530209_CreatedQuestionModel.resx">
       <DependentUpon>202010211530209_CreatedQuestionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011181655242_AddedNavigationToQuestionsFromCategory.resx">
+      <DependentUpon>202011181655242_AddedNavigationToQuestionsFromCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
