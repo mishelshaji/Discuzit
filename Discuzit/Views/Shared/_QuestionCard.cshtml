@@ -1,0 +1,11 @@
+﻿@model Discuzit.Models.Question
+
+<div style="padding: 10px;" class="panel">
+    <h4>@Html.DisplayFor(m=>m.Title)</h4>
+    <div style="display: flex;">
+        <span class="btn glyphicon glyphicon-chevron-up"> @Html.DisplayFor(m => m.TotalUpVotes)</span>
+        <span class="btn glyphicon glyphicon-chevron-down"> @Html.DisplayFor(m => m.TotalDownVotes)</span>
+        <span class="btn glyphicon glyphicon-tag"> @Html.DisplayFor(m => m.Category.CategoryName)</span>
+        <span class="btn glyphicon glyphicon-time"> @Html.DisplayFor(m => m.CreatedOn)</span>
+    </div>
+</div>
