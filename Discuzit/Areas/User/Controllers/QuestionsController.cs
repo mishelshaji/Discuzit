@@ -23,7 +23,7 @@ namespace Discuzit.Areas.User.Controllers
         public async Task<ActionResult> Index()
         {
             var useriD = User.Identity.GetUserId();
-            var questions = await db.Questions.Where(q=>q.CreatedBy == useriD).Take(100).Include(q => q.Category).ToListAsync();
+            var questions = await db.Questions.Take(100).Include(q => q.Category).ToListAsync();
             foreach (var question in questions)
             {
                 question.Body = _markdownRenderer.RenderHtmlFromMd(question.Body);

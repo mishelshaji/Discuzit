@@ -4,11 +4,10 @@
     ViewBag.Title = "Questions";
 }
 
-<h2>Questions</h2>
+<h2>New Questions</h2>
 
 @foreach (var q in Model)
 {
-    <p>@q.Category.CategoryName</p>
     @Html.Partial("_QuestionCard", q)
 }
 
