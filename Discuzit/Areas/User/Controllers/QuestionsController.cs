@@ -144,5 +144,17 @@ namespace Discuzit.Areas.User.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Answer(int id)
+        {
+            var q = db.Questions.Where(m => m.Id == id).FirstOrDefault();
+            var answer = new Discuzit.Models.Answer();
+            if (q == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Question = q;
+            return View(answer);
+        }
     }
 }

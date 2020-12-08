@@ -13,6 +13,7 @@ namespace Discuzit.Areas.User.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
+        private MarkdownRenderer _markdownRenderer = new MarkdownRenderer();
         // GET: User/Home
         public ActionResult Index()
         {
@@ -21,8 +22,15 @@ namespace Discuzit.Areas.User.Controllers
 
         public ActionResult Questions()
         {
-            var userId = _db.Users.FirstOrDefault(x => x.UserName == System.Web.HttpContext.Current.User.Identity.Name)?.Id;
-            var questions = _db.Questions.Where(m => m.CreatedBy == userId).Include(m=>m.Category);
+            //var userId = _db.Users.FirstOrDefault(x => x.UserName == System.Web.HttpContext.Current.User.Identity.Name)?.Id;
+            //var questions = _db.Questions.Where(m => m.CreatedBy == userId).Include(m=>m.Category);
+            //return View(questions);
+
+            var questions = _db.Questions.Take(100).Include(q => q.Category).ToList();
+            foreach (var question in questions)
+            {
+                question.Body = _markdownRenderer.RenderHtmlFromMd(question.Body);
+            }
             return View(questions);
         }
     }

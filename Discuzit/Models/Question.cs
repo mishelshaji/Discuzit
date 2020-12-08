@@ -34,5 +34,7 @@ namespace Discuzit.Models
 
         [Required]
         public string CreatedBy { get; set; }
+
+        public ICollection<Answer> Answers { get; set; }
     }
 }
