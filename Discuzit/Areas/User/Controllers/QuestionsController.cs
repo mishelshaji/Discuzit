@@ -145,6 +145,7 @@ namespace Discuzit.Areas.User.Controllers
             base.Dispose(disposing);
         }
 
+        [HttpGet]
         public ActionResult Answer(int id)
         {
             var q = db.Questions.Where(m => m.Id == id).FirstOrDefault();
@@ -154,6 +155,31 @@ namespace Discuzit.Areas.User.Controllers
                 return HttpNotFound();
             }
             ViewBag.Question = q;
+            return View(answer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Answer(int id, Answer answer)
+        {
+            if (ModelState.IsValid)
+            {
+                var ans = new Models.Answer()
+                {
+                    Body = answer.Body,
+                    QuestionId = id,
+                    UserId = User.Identity.GetUserId(),
+                    CreatedOn = DateTime.Now
+                };
+                db.Answers.Add(ans);
+                db.SaveChanges();
+            }
+            else
+            {
+                var q = db.Questions.Where(m => m.Id == id).FirstOrDefault();
+                ViewBag.Question = q;
+                return View(answer);
+            }
             return View(answer);
         }
     }

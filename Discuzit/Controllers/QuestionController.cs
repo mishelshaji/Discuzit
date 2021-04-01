@@ -20,5 +20,21 @@ namespace Discuzit.Controllers
             qq.Categories = _db.Categories.ToList();
             return View(qq);
         }
+
+        [HttpGet]
+        public ActionResult View(int id)
+        {
+            var question = _db.Questions.Find(id);
+            if (question == null)
+            {
+                return HttpNotFound();
+            }
+
+            var answers = _db.Answers.Where(m => m.QuestionId == question.Id).ToList();
+            ViewBag.Question = question;
+            ViewBag.Answers = answers;
+            ViewBag.TotalAnswers = answers.Count();
+            return View(new Discuzit.Models.ViewModels.Answer());
+        }
     }
 }

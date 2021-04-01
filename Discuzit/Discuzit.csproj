@@ -203,6 +203,7 @@
     <Compile Include="Areas\User\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnswersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
@@ -327,6 +328,9 @@
     <Content Include="Views\Shared\_MarkdownEditorReference.cshtml" />
     <Content Include="Views\Shared\_QuestionCard.cshtml" />
     <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Shared\_AnswerPostForm.cshtml" />
+    <Content Include="Views\Question\View.cshtml" />
+    <Content Include="Views\Answers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,7 @@
 ﻿@model Discuzit.Models.Question
 
 <div style="margin: 10px; padding: 10px; background-color: #F7F7F7" class="panel">
-    <h4>@Html.DisplayFor(m => m.Title)</h4>
+    <h4>@Html.ActionLink(Model.Title, "View", "Question", new { id = Model.Id }, null)</h4>
     <div style="display: flex;">
         <span class="btn text-success glyphicon glyphicon-chevron-up"> @Html.DisplayFor(m => m.TotalUpVotes)</span>
         <span class="btn text-danger glyphicon glyphicon-chevron-down"> @Html.DisplayFor(m => m.TotalDownVotes)</span>

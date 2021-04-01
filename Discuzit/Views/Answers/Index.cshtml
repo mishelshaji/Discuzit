@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Answers</h2>
+
+<div class="container">
+    @foreach (var i in ViewBag.Answers)
+    {
+        <div class="panel-heading">
+            <p>@i.Body</p>
+        </div>
+    }
+</div>
+
